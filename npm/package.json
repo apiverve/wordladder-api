@@ -1,0 +1,35 @@
+{
+  "name": "@apiverve/wordladder",
+  "version": "1.1.12",
+  "description": "Word Ladder Generator creates puzzles where players transform one word into another by changing one letter at a time, with each step forming a valid word.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "mocha",
+    "example": "node examples/basic.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apiverve/wordladder-api.git",
+    "directory": "npm"
+  },
+  "keywords": [
+    "word ladder", "word chain", "doublets", "word puzzle", "vocabulary game"
+  ],
+  "author": "APIVerve <hello@apiverve.com> (http://apiverve.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/apiverve/wordladder-api/issues"
+  },
+  "homepage": "https://apiverve.com/marketplace/wordladder?utm_source=npm",
+  "devDependencies": {
+    "mocha": "^11.0.1",
+    "chai": "^5.1.2",
+    "dotenv": "^16.4.7"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "promise": "^8.3.0",
+    "axios": "1.13.2"
+  }
+}
