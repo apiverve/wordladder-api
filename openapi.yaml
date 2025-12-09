@@ -1,0 +1,104 @@
+openapi: 3.0.4
+info:
+  title: Word Ladder Generator
+  description: Word Ladder Generator creates puzzles where players transform one word into another by changing one letter at a time, with each step forming a valid word.
+  termsOfService: https://apiverve.com/terms/
+  contact:
+    name: APIVerve Support
+    email: hello@apiverve.com
+    url: https://apiverve.com/contact
+  version: 1.0.9
+externalDocs:
+  description: Learn more about APIVerve
+  url: https://docs.apiverve.com?utm_source=openapi
+servers:
+- url: https://api.apiverve.com/
+paths:
+  /v1/wordladder:
+    get:
+      summary: Generate Word Ladder
+      description: Word Ladder Generator creates puzzles where players transform one word into another by changing one letter at a time, with each step forming a valid word.
+      operationId: wordladder
+      parameters:
+      - name: start
+        in: query
+        schema:
+          type: string
+        required: false
+        description: Starting word (3-6 letters)
+        example: cold
+      - name: end
+        in: query
+        schema:
+          type: string
+        required: false
+        description: Ending word (same length as start)
+        example: warm
+      - name: difficulty
+        default: medium
+        in: query
+        schema:
+          type: string
+        required: false
+        description: 'Difficulty: easy, medium, hard'
+        example: medium
+      - name: count
+        default: '1'
+        in: query
+        schema:
+          type: number
+        required: false
+        description: Number of puzzles (1-5)
+        example: '1'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: status
+                  error:
+                    type: string
+                    description: error
+                  data:
+                    type: string
+                    description: data
+              example:
+                status: ok
+                error: 
+                data:
+                  puzzles:
+                  - startWord: LESS
+                    endWord: QUAT
+                    steps: 4
+                    solution:
+                    - LESS
+                    - LEST
+                    - BEST
+                    - BUST
+                    - BUAT
+                    - QUAT
+                    solvable: true
+                    difficulty: medium
+                    hint: (a) A pustule. [Obs.] (b) An annoying, worthless person. Sha
+                  count: 1
+                  difficulty: medium
+                  html: "<html><head><title>Word Ladder</title><style>body {font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: 0 auto;}h1 {text-align: center; color: #4CAF50;}.puzzle {background: #f5f5f5; padding: 25px; margin: 20px 0; border-radius: 10px;}.words {display: flex; justify-content: space-between; align-items: center; margin: 20px 0;}.word {font-size: 28px; font-weight: bold; letter-spacing: 3px; padding: 15px 25px; border-radius: 10px;}.start {background: #4CAF50; color: white;}.end {background: #2196F3; color: white;}.arrow {font-size: 30px; color: #999;}.steps {text-align: center; font-size: 14px; color: #666; margin-bottom: 15px;}.ladder {display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 20px 0;}.rung {width: 150px; height: 40px; border: 2px dashed #ccc; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 18px; letter-spacing: 5px;}.hint {font-size: 13px; color: #888; font-style: italic; margin-top: 10px;}</style></head><body><h1>Word Ladder</h1><p style='text-align:center;'>Change one letter at a time to get from the first word to the last</p><div class='puzzle'><div class='steps'>Puzzle #1 - 4 steps</div><div class='words'><span class='word start'>LESS</span><span class='arrow'>→</span><span class='word end'>QUAT</span></div><div class='ladder'><div class='rung'>_ _ _ _</div><div class='rung'>_ _ _ _</div><div class='rung'>_ _ _ _</div><div class='rung'>_ _ _ _</div></div><div class='hint'>End word hint: (a) A pustule. [Obs.] (b) An annoying, worthless person. Sha...</div></div></body></html>"
+        '401':
+          description: Your request was not authorized, or your API Key was invalid
+        '404':
+          description: Requested resource was not found
+        '500':
+          description: A server error has occured, try again later
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-api-key
+      in: header
+security:
+- api_key: []
