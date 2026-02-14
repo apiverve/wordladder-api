@@ -13,15 +13,7 @@ const API_URL = 'https://api.apiverve.com/v1/wordladder';
  */
 async function callWordLadderGeneratorAPI() {
   try {
-    // Query parameters
-    const params &#x3D; new URLSearchParams({
-            start: &#x27;cold&#x27;,
-            end: &#x27;warm&#x27;,
-            difficulty: &#x27;medium&#x27;,
-            count: 1
-        });
-
-    const response = await fetch(`${API_URL}?${params}`, {
+    const response = await fetch(API_URL, {
       method: 'GET',
       headers: {
         'x-api-key': API_KEY
