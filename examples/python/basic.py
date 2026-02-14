@@ -17,14 +17,11 @@ def call_wordladder_api():
     Make a GET request to the Word Ladder Generator API
     """
     try:
-        # Query parameters
-        params &#x3D; {&#x27;start&#x27;: &#x27;cold&#x27;, &#x27;end&#x27;: &#x27;warm&#x27;, &#x27;difficulty&#x27;: &#x27;medium&#x27;, &#x27;count&#x27;: 1}
-
         headers = {
             'x-api-key': API_KEY
         }
 
-        response = requests.get(API_URL, headers=headers, params=params)
+        response = requests.get(API_URL, headers=headers)
 
         # Raise exception for HTTP errors
         response.raise_for_status()
