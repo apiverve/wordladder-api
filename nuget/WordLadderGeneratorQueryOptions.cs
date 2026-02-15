@@ -12,28 +12,24 @@ namespace APIVerve.API.WordLadderGenerator
     {
         /// <summary>
         /// Starting word (3-6 letters)
-        /// Example: cold
         /// </summary>
         [JsonProperty("start")]
         public string Start { get; set; }
 
         /// <summary>
         /// Ending word (same length as start)
-        /// Example: warm
         /// </summary>
         [JsonProperty("end")]
         public string End { get; set; }
 
         /// <summary>
-        /// Difficulty: easy, medium, hard
-        /// Example: medium
+        /// Difficulty level
         /// </summary>
         [JsonProperty("difficulty")]
         public string Difficulty { get; set; }
 
         /// <summary>
-        /// Number of puzzles (1-5)
-        /// Example: 1
+        /// Number of puzzles
         /// </summary>
         [JsonProperty("count")]
         public string Count { get; set; }
