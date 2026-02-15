@@ -1,1 +1,3 @@
-from .apiClient import WordladderAPIClient
+from .apiClient import WordladderAPIClient, WordladderAPIClientError
+
+__all__ = ['WordladderAPIClient', 'WordladderAPIClientError']
