@@ -1,6 +1,6 @@
 {
   "name": "@apiverve/wordladder",
-  "version": "1.1.13",
+  "version": "1.1.14",
   "description": "Word Ladder Generator creates puzzles where players transform one word into another by changing one letter at a time, with each step forming a valid word.",
   "main": "index.js",
   "types": "index.d.ts",
