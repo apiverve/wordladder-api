@@ -18,7 +18,8 @@ var query = {
   start: "cold",
   end: "warm",
   difficulty: "medium",
-  count: 1
+  count: 1,
+  image: false
 };
 
 // Make the API request using callback
