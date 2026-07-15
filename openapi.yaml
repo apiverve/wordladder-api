@@ -51,6 +51,13 @@ paths:
           required: false
           description: Number of puzzles
           example: 1
+        - name: image
+          in: query
+          schema:
+            type: boolean
+          required: false
+          description: Set to true to generate a downloadable puzzle image
+          example: true
       responses:
         '200':
           description: Successful Response
