@@ -30,7 +30,7 @@ class wordladderWrapper {
         this.baseURL = 'https://api.apiverve.com/v1/wordladder';
 
         // Validation rules for parameters (generated from schema)
-        this.validationRules = {"start":{"type":"string","required":false,"minLength":3,"maxLength":6},"end":{"type":"string","required":false,"minLength":3,"maxLength":6},"difficulty":{"type":"string","required":false,"default":"medium"},"count":{"type":"integer","required":false,"min":1,"max":5,"default":1}};
+        this.validationRules = {"start":{"type":"string","required":false,"minLength":3,"maxLength":6},"end":{"type":"string","required":false,"minLength":3,"maxLength":6},"difficulty":{"type":"string","required":false,"default":"medium"},"count":{"type":"integer","required":false,"min":1,"max":5,"default":1},"image":{"type":"boolean","required":false,"default":false}};
     }
 
     /**
