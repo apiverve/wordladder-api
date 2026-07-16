@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-#if NET45 || NETSTANDARD2_0 || NETSTANDARD2_1 || NET6_0
+#if !NET20 && !NET35 && !NET40
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -57,7 +57,7 @@ namespace APIVerve.API.WordLadderGenerator
     /// Client for the WordLadderGenerator API
     /// </summary>
     public class WordLadderGeneratorAPIClient
-#if NET45 || NETSTANDARD2_0 || NETSTANDARD2_1 || NET6_0
+#if !NET20 && !NET35 && !NET40
         : IDisposable
 #endif
     {
@@ -70,7 +70,8 @@ namespace APIVerve.API.WordLadderGenerator
             { "start", new ValidationRule { Type = "string", Required = false, MinLength = 3, MaxLength = 6 } },
             { "end", new ValidationRule { Type = "string", Required = false, MinLength = 3, MaxLength = 6 } },
             { "difficulty", new ValidationRule { Type = "string", Required = false } },
-            { "count", new ValidationRule { Type = "integer", Required = false, Min = 1, Max = 5 } }
+            { "count", new ValidationRule { Type = "integer", Required = false, Min = 1, Max = 5 } },
+            { "image", new ValidationRule { Type = "boolean", Required = false } }
         };
 
         /// <summary>Format validation patterns</summary>
@@ -83,7 +84,7 @@ namespace APIVerve.API.WordLadderGenerator
             { "hexColor", new System.Text.RegularExpressions.Regex(@"^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$", System.Text.RegularExpressions.RegexOptions.IgnoreCase) }
         };
 
-#if NET45 || NETSTANDARD2_0 || NETSTANDARD2_1 || NET6_0
+#if !NET20 && !NET35 && !NET40
         private readonly HttpClient _httpClient;
         private readonly bool _disposeHttpClient;
 #endif
@@ -93,7 +94,7 @@ namespace APIVerve.API.WordLadderGenerator
         private bool _isDebug { get; set; }
         private int _maxRetries { get; set; }
         private int _retryDelayMs { get; set; }
-#if NET45 || NETSTANDARD2_0 || NETSTANDARD2_1 || NET6_0
+#if !NET20 && !NET35 && !NET40
         private Action<string> _logger { get; set; }
 #endif
         private Dictionary<string, string> _customHeaders { get; set; }
@@ -104,7 +105,7 @@ namespace APIVerve.API.WordLadderGenerator
         /// <param name="apiKey">Your API key from https://apiverve.com</param>
         /// <exception cref="ArgumentException">Thrown when API key is invalid</exception>
         public WordLadderGeneratorAPIClient(string apiKey)
-#if NET45 || NETSTANDARD2_0 || NETSTANDARD2_1 || NET6_0
+#if !NET20 && !NET35 && !NET40
             : this(apiKey, true, false, null)
 #endif
         {
@@ -127,7 +128,7 @@ namespace APIVerve.API.WordLadderGenerator
         /// <param name="isDebug">Enable debug logging</param>
         /// <exception cref="ArgumentException">Thrown when API key is invalid</exception>
         public WordLadderGeneratorAPIClient(string apiKey, bool isSecure, bool isDebug)
-#if NET45 || NETSTANDARD2_0 || NETSTANDARD2_1 || NET6_0
+#if !NET20 && !NET35 && !NET40
             : this(apiKey, isSecure, isDebug, null)
 #endif
         {
@@ -142,7 +143,7 @@ namespace APIVerve.API.WordLadderGenerator
 #endif
         }
 
-#if NET45 || NETSTANDARD2_0 || NETSTANDARD2_1 || NET6_0
+#if !NET20 && !NET35 && !NET40
         /// <summary>
         /// Initialize the API client with your API key and a custom HttpClient
         /// </summary>
@@ -224,7 +225,7 @@ namespace APIVerve.API.WordLadderGenerator
         {
             ValidateApiKey(apiKey);
             _apiKey = apiKey;
-#if NET45 || NETSTANDARD2_0 || NETSTANDARD2_1 || NET6_0
+#if !NET20 && !NET35 && !NET40
             _httpClient.DefaultRequestHeaders.Remove("x-api-key");
             _httpClient.DefaultRequestHeaders.Add("x-api-key", _apiKey);
 #endif
@@ -254,7 +255,7 @@ namespace APIVerve.API.WordLadderGenerator
         /// <param name="retryDelayMs">Delay in milliseconds (default: 1000)</param>
         public void SetRetryDelay(int retryDelayMs) => _retryDelayMs = Math.Max(0, retryDelayMs);
 
-#if NET45 || NETSTANDARD2_0 || NETSTANDARD2_1 || NET6_0
+#if !NET20 && !NET35 && !NET40
         /// <summary>
         /// Sets a custom logger for request/response debugging
         /// </summary>
@@ -473,14 +474,14 @@ namespace APIVerve.API.WordLadderGenerator
             // Validate parameters before making request
             ValidateParams(options);
 
-#if NET45 || NETSTANDARD2_0 || NETSTANDARD2_1 || NET6_0
+#if !NET20 && !NET35 && !NET40
             return ExecuteAsync(options).GetAwaiter().GetResult();
 #else
             return ExecuteWithWebRequest(options);
 #endif
         }
 
-#if NET45 || NETSTANDARD2_0 || NETSTANDARD2_1 || NET6_0
+#if !NET20 && !NET35 && !NET40
         /// <summary>
         /// Execute the API call asynchronously
         /// </summary>
@@ -789,7 +790,7 @@ namespace APIVerve.API.WordLadderGenerator
         /// </summary>
         private void Log(string message)
         {
-#if NET45 || NETSTANDARD2_0 || NETSTANDARD2_1 || NET6_0
+#if !NET20 && !NET35 && !NET40
             if (_logger != null)
             {
                 _logger(message);
@@ -851,7 +852,7 @@ namespace APIVerve.API.WordLadderGenerator
             return url;
         }
 
-#if NET45 || NETSTANDARD2_0 || NETSTANDARD2_1 || NET6_0
+#if !NET20 && !NET35 && !NET40
         /// <summary>
         /// Disposes the HttpClient if it was created internally
         /// </summary>
