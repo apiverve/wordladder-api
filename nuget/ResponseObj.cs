@@ -25,6 +25,9 @@ namespace APIVerve.API.WordLadderGenerator
 
         [JsonProperty("data")]
         public Data Data { get; set; }
+
+        [JsonProperty("premium")]
+        public Premium Premium { get; set; }
     }
 
     public partial class Data
@@ -33,13 +36,31 @@ namespace APIVerve.API.WordLadderGenerator
         public Puzzle[] Puzzles { get; set; }
 
         [JsonProperty("count")]
-        public long Count { get; set; }
+        public long? Count { get; set; }
 
         [JsonProperty("difficulty")]
         public string Difficulty { get; set; }
 
         [JsonProperty("html")]
         public string Html { get; set; }
+
+        [JsonProperty("image")]
+        public Image Image { get; set; }
+    }
+
+    public partial class Image
+    {
+        [JsonProperty("imageName")]
+        public string ImageName { get; set; }
+
+        [JsonProperty("format")]
+        public string Format { get; set; }
+
+        [JsonProperty("downloadURL")]
+        public Uri DownloadUrl { get; set; }
+
+        [JsonProperty("expires")]
+        public long? Expires { get; set; }
     }
 
     public partial class Puzzle
@@ -51,18 +72,27 @@ namespace APIVerve.API.WordLadderGenerator
         public string EndWord { get; set; }
 
         [JsonProperty("steps")]
-        public long Steps { get; set; }
+        public long? Steps { get; set; }
 
         [JsonProperty("solution")]
         public string[] Solution { get; set; }
 
         [JsonProperty("solvable")]
-        public bool Solvable { get; set; }
+        public bool? Solvable { get; set; }
 
         [JsonProperty("difficulty")]
         public string Difficulty { get; set; }
+    }
 
-        [JsonProperty("hint")]
-        public string Hint { get; set; }
+    public partial class Premium
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("upgrade_url")]
+        public Uri UpgradeUrl { get; set; }
+
+        [JsonProperty("locked_fields")]
+        public string[] LockedFields { get; set; }
     }
 }
