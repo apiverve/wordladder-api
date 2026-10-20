@@ -1,6 +1,6 @@
 import re
-from typing import Dict, Optional, Any
-from dataclasses import dataclass, List
+from typing import Dict, Optional, Any, List
+from dataclasses import dataclass
 import requests
 
 
@@ -27,7 +27,8 @@ class WordladderAPIClient:
         "start": {"type": "string", "required": False, "minLength": 3, "maxLength": 6},
         "end": {"type": "string", "required": False, "minLength": 3, "maxLength": 6},
         "difficulty": {"type": "string", "required": False, "default": "medium"},
-        "count": {"type": "integer", "required": False, "min": 1, "max": 5, "default": 1}
+        "count": {"type": "integer", "required": False, "min": 1, "max": 5, "default": 1},
+        "image": {"type": "boolean", "required": False, "default": False}
     }
 
     # Format validation patterns
