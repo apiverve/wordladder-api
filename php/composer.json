@@ -1,7 +1,7 @@
 {
     "name": "apiverve/wordladder",
     "description": "Word Ladder Generator creates puzzles where players transform one word into another by changing one letter at a time, with each step forming a valid word.",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "type": "library",
     "license": "MIT",
     "authors": [
