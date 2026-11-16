@@ -28,7 +28,7 @@ paths:
           schema:
             type: string
           required: false
-          description: Starting word (3-6 letters)
+          description: Starting word (3-6 letters); must differ from end
           example: cold
         - name: end
           in: query
