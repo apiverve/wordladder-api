@@ -11,7 +11,7 @@ namespace APIVerve.API.WordLadderGenerator
     public class WordLadderGeneratorQueryOptions
     {
         /// <summary>
-        /// Starting word (3-6 letters)
+        /// Starting word (3-6 letters); must differ from end
         /// </summary>
         [JsonProperty("start")]
         public string Start { get; set; }
